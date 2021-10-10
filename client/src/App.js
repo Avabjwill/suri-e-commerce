@@ -1,4 +1,8 @@
 import React from 'react';
+import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css"
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -6,19 +10,18 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
-import Header from './components/Header';
 import Footer from './components/Footer';
-// import ProductScreen from "./pages/ProductScreen";
-// import CartScreen from "./pages/CartScreen";
-// import Navbar from "./components/Navbar";
-// import SideDrawer from "./components/SideDrawer";
-// import Backdrop from "./components/Backdrop";
+import Product from './pages/Product';
+import Cart from './pages/Cart'
+import Navbar from "./components/Navbar";
+import Backdrop from "./components/Background";
+import SideMenu from './components/Sidemenu';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -45,33 +48,47 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [sideToggle, setSideToggle] = useState(false);
+
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/me">
-              <Profile />
-            </Route>
-            <Route exact path="/users/:id">
-              <Profile />
-            </Route>
-            {/* <Route exact path="/product">
-              <ProductScreen />
-            </Route> */}
+        <Navbar click={() => setSideToggle(true)} />
+        <SideMenu show={sideToggle} click={() => setSideToggle(false)} />
+        <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
+        <main className="app">
+          <Switch>
+          <div className="flex-column justify-flex-start min-100-vh">
+            <div className="container">
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+              <Route exact path="/home">
+                <Home />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
+              </Route>
+              <Route exact path="/me">
+                <Profile />
+              </Route>
+              <Route exact path="/users/:id">
+                <Profile />
+              </Route>
+              <Route exact path="/product/:id">
+                <Product />
+              </Route>
+              <Route exact path="/cart">
+                <Cart />
+              </Route>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+          </Switch>
+        </main>
       </Router>
     </ApolloProvider>
   );

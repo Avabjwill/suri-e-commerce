@@ -12,16 +12,16 @@ const Navbar = ({ click }) => {
 
   return (
     <nav className="navbar">
-      <div className="navbar__logo">
+      <div className="navbar_logo">
         <h2>MERN Shopping Cart</h2>
       </div>
 
-      <ul className="navbar__links">
+      <ul className="navbar_links">
         <li>
-          <Link to="/cart" className="cart__link">
+          <Link to="/cart" className="cart_link">
             <i className="fas fa-shopping-cart"></i>
             <span>
-              Cart <span className="cartlogo__badge">{getCartCount()}</span>
+              Cart <span className="cartlogo_badge">{getCartCount()}</span>
             </span>
           </Link>
         </li>
