@@ -21,7 +21,7 @@ import Footer from './components/Footer';
 import Product from './pages/Product';
 import Cart from './pages/Cart'
 import Navbar from "./components/Navbar";
-import Backdrop from "./components/Background";
+import Backdrop from "./components/Backdrop";
 import SideMenu from './components/Sidemenu';
 
 // Construct our main GraphQL API endpoint

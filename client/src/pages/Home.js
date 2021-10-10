@@ -1,14 +1,22 @@
 // Node Modules
 import React from 'react';
+import "./HomePage.css";
 import { useQuery } from '@apollo/client';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // Utilities
 import Auth from '../utils/auth';
 import { QUERY_USERS } from '../utils/queries';
 // Components
 import UserList from '../components/UserList';
+import Product from "../components/Product";
+import { getProducts, getProducts as listProducts } from "../redux/actions/productActions";
+
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_USERS);
+  const { loading, data, error } = useQuery(QUERY_USERS);
+  const products = useSelector(state => state.products || [])
+console.log('products', products);
   const users = data?.users || [];
 
   const renderUserList = () => {
@@ -23,6 +31,21 @@ const Home = () => {
     if (!Auth.loggedIn()) return null;
     return Auth.getProfile().data.username;
   }
+  // const dispatch = useDispatch();
+
+  // const getProducts = useSelector((state) => state.getProducts);
+  // const { products, error } = getProducts;
+
+  useEffect(() => {
+    // dispatch(listProducts());
+    console.log('LOAD PRODUCTS');
+    console.log(getProducts);
+    getProducts();
+  }, []);
+
+  useEffect(() => {
+    console.log(products);
+  }, []);
 
   return (
     <main>
@@ -35,6 +58,27 @@ const Home = () => {
         </div>
         <div className="col-12 col-md-8 mb-3">
           {renderUserList()}
+          <div className="homescreen">
+      <h2 className="homescreen__title">Latest Products</h2>
+      <div className="homescreen__products">
+        {loading ? (
+          <h2>Loading...</h2>
+        ) : error ? (
+          <h2>{error}</h2>
+        ) : (
+          products.map((product) => (
+            <Product
+              key={product._id}
+              name={product.name}
+              description={product.description}
+              price={product.price}
+              imageUrl={product.imageUrl}
+              productId={product._id}
+            />
+          ))
+        )}
+      </div>
+    </div>
         </div>
       </div>
     </main>
