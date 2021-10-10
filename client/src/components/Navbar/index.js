@@ -30,7 +30,7 @@ const Navbar = ({ click }) => {
         </li>
       </ul>
 
-      <div className="hamburger__menu" onClick={click}>
+      <div className="hamburger_menu" onClick={click}>
         <div></div>
         <div></div>
         <div></div>

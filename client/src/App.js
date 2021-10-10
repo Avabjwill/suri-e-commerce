@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css"
+import "./index.css"
 
 import {
   ApolloClient,
@@ -12,7 +13,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
-import HomePage from './pages/HomePage';
+//import HomePage from './pages/HomePage';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
@@ -56,14 +57,11 @@ function App() {
         <Navbar click={() => setSideToggle(true)} />
         <SideMenu show={sideToggle} click={() => setSideToggle(false)} />
         <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
-        <main className="app">
-          <Switch>
+
+        <Switch>
           <div className="flex-column justify-flex-start min-100-vh">
             <div className="container">
               <Route exact path="/">
-                <HomePage />
-              </Route>
-              <Route exact path="/home">
                 <Home />
               </Route>
               <Route exact path="/login">
@@ -87,8 +85,8 @@ function App() {
             </div>
             <Footer />
           </div>
-          </Switch>
-        </main>
+        </Switch>
+
       </Router>
     </ApolloProvider>
   );

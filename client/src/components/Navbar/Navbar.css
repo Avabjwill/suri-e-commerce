@@ -62,7 +62,7 @@
     font-size: 1rem;
   }
   
-  .hamburger__menu {
+  .hamburger_menu {
     display: none;
     width: 30px;
     height: 30px;
@@ -72,11 +72,11 @@
     cursor: pointer;
   }
   
-  .hamburger__menu:hover > div {
+  .hamburger_menu:hover > div {
     background: #dd219e;
   }
   
-  .hamburger__menu > div {
+  .hamburger_menu > div {
     width: 100%;
     height: 3px;
     background: #f4f4f4;
@@ -87,7 +87,7 @@
       display: none;
     }
   
-    .hamburger__menu {
+    .hamburger_menu {
       display: flex;
     }
   }
