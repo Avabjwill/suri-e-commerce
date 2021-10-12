@@ -1,8 +1,9 @@
-const products = require('../routes/products.js');
+const product = require('../routes/products.js');
 
 const getAllProducts = async (req, res) => {
     try {
-        console.log('products', products)
+        const products = await product.find({});
+
         res.json(products);
     } catch (error) {
         console.error(error);
@@ -12,9 +13,9 @@ const getAllProducts = async (req, res) => {
 
 const getProductById = async (req, res) => {
     try {
-        const product = products.find(product => product.id == req.params.id)
+        const products = await product.findById(req.params.id);
 
-        res.json(product);
+        res.json(products);
     } catch (error) {
         console.error(error);
         res.status(500).json({ Message: " Server Error"});

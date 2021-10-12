@@ -31,6 +31,9 @@ const SideMenu = ({ show, click }) => {
         <li>
           <Link to="/">Shop</Link>
         </li>
+        <li>
+          <Link to="/me">Profile</Link>
+        </li>
       </ul>
     </div>
   );

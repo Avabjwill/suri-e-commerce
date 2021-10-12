@@ -1,4 +1,4 @@
-import "./Product.css";
+import "./ProductScreen.css";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -14,14 +14,14 @@ const ProductScreen = ({ match, history }) => {
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
-    if (product && match.params.id !== product._id) {
-      dispatch(getProductDetails(match.params.id));
+    if (product === product._id) {
+      dispatch(getProductDetails());
     }
-  }, [dispatch, match, product]);
+  }, [dispatch, product]);
 
   const addToCartHandler = () => {
-    dispatch(addToCart(product._id, qty));
-    history.push(`/cart`);
+    dispatch(addToCart(product.id, qty));
+    history(`/cart`);
   };
 
   return (
