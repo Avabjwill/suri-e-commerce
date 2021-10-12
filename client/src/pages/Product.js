@@ -21,7 +21,7 @@ const ProductScreen = ({ match, history }) => {
 
   const addToCartHandler = () => {
     dispatch(addToCart(product.id, qty));
-    history(`/cart`);
+    history.pushState(`/Cart`);
   };
 
   return (

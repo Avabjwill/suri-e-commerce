@@ -10,12 +10,12 @@
   }
   
   .left__image {
-    margin: 1rem;
+    margin: 5rem;
     flex: 0.6;
   }
   
   .left__info {
-    margin: 1rem;
+    margin: 5rem;
     flex: 0.4;
     background: #fff;
     height: fit-content;
@@ -60,7 +60,7 @@
     grid-column: 1/-1;
     width: 100%;
     padding: 10px 16px;
-    background: #171717;
+    background: #7a5151;
     color: #f4f4f4;
     border: 1px solid #171717;
     cursor: pointer;

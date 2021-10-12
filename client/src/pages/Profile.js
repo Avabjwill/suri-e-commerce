@@ -36,8 +36,7 @@ const Profile = () => {
   if (!user?.username) {
     return (
       <h4>
-        Your Profile is currently Unavailable. Please try again later.
-      </h4>
+        Your Profile is currently Unavailable. Please try again later.</h4>
     );
   }
 

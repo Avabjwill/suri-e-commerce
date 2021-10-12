@@ -18,7 +18,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Footer from './components/Footer';
-import Product from './pages/Product';
+import ProductScreen from './pages/Product';
 import Cart from './pages/Cart'
 import Navbar from "./components/Navbar";
 import Backdrop from "./components/Backdrop";
@@ -77,7 +77,7 @@ function App() {
                 <Profile />
               </Route>
               <Route exact path="/product/:id">
-                <Product />
+                <ProductScreen />
               </Route>
               <Route exact path="/cart">
                 <Cart />
